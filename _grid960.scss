@@ -1,0 +1,142 @@
+﻿@mixin grid960($numberOfColumns) {
+/*
+  960 Grid System ~ Core CSS.
+  Learn more ~ http://960.gs/
+
+  Licensed under GPL and MIT.
+*/
+
+/*
+  Forces backgrounds to span full width,
+  even if there is horizontal scrolling.
+  Increase this if your layout is wider.
+
+  Note: IE6 works fine without this fix.
+*/	
+	// setup default colum sizes. 
+	$columnspacer: 960 / $numberOfColumns;
+	$margin-size:"10px";
+	$grdWidth: $columnspacer - 20;
+	$grdWidth: $grdWidth - $columnspacer;	
+	$lastButOneColumnNumber: $numberOfColumns - 1;
+	
+	
+
+	// switch margin to 5px if 24 cols selected.
+	@if $numberOfColumns == 24 {
+		$margin-size:"5px";
+		$grdWidth: $columnspacer - 10;
+		$grdWidth: $grdWidth - $columnspacer;
+	}  
+
+
+	body {
+		min-width: 960px;
+	}
+	
+	/* Container
+	----------------------------------------------------------------------------------------------------*/
+	.container_#{$numberOfColumns} {
+		margin-left:  auto;
+		margin-right: auto;
+		width:        960px;
+	}
+	
+	/* Grid >> Global
+	----------------------------------------------------------------------------------------------------*/
+	$grdOut:"";
+	@for $colCount from 1 through $lastButOneColumnNumber {
+		$grdOut: $grdOut + ".grid_#{$colCount} , ";
+	}
+
+	#{$grdOut} .grid_#{$numberOfColumns} {
+				display:      inline;
+				float:        left;
+				margin-left:  #{$margin-size};
+				margin-right: #{$margin-size};
+				}
+
+
+	$grdOut:"";
+	@for $colCount from 1 through $lastButOneColumnNumber - 1 {
+		$grdOut:$grdOut + ".push_#{$colCount}, .pull_#{$colCount}, ";
+	}
+
+	 
+	#{$grdOut} .push_#{$lastButOneColumnNumber}, .pull_#{$lastButOneColumnNumber} {
+		position: relative;	
+	}
+	/* Grid >> Children (Alpha ~ First, Omega ~ Last)
+	----------------------------------------------------------------------------------------------------*/
+	.alpha { margin-left: 0; }
+	.omega { margin-right: 0; }
+
+	/* Grid  
+	----------------------------------------------------------------------------------------------------*/
+	.container_#{$numberOfColumns} {
+		@for $colCount from 1 through $numberOfColumns { 
+			.grid_#{$colCount}		{ width:  0px + ($grdWidth + $colCount * $columnspacer); }
+		}
+
+	 
+		@for $colCount from 1 through $lastButOneColumnNumber {
+			.prefix_#{$colCount}	{ width: 0px + $colCount * $columnspacer;  }
+		}
+	 
+		@for $colCount from 1 through $lastButOneColumnNumber {
+			.suffix_#{$colCount}	{ width: 0px + $colCount * $columnspacer;  }
+		}
+	 
+		@for $colCount from 1 through $lastButOneColumnNumber  {
+			.push_#{$colCount}	{ width: 0px + $colCount * $columnspacer;  }
+		}
+		 
+		@for $colCount from 1 through $lastButOneColumnNumber  {
+			.pull_#{$colCount}	{ width: 0px + ($colCount * $columnspacer) * -1;  }
+		}
+
+		 
+	}
+
+	/* Clear Floated Elements
+	----------------------------------------------------------------------------------------------------*/
+	/* http://sonspring.com/journal/clearing-floats */
+	.clear {
+	  clear: both;
+	  display: block;
+	  overflow: hidden;
+	  visibility: hidden;
+	  width: 0;
+	  height: 0;
+	}
+
+	 /* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
+	.clearfix:before,
+	.clearfix:after,
+	.container_#{$numberOfColumns}:before,
+	.container_#{$numberOfColumns}:after
+	{
+	  content: '.';
+	  display: block;
+	  overflow: hidden;
+	  visibility: hidden;
+	  font-size: 0;
+	  line-height: 0;
+	  width: 0;
+	  height: 0;
+	}
+
+	/*
+		The following zoom:1 rule is specifically for IE6 + IE7.
+		Move to separate stylesheet if invalid CSS is a problem.
+	*/
+	.clearfix:after, .container_#{$numberOfColumns}:after {
+		clear: both;
+	}
+ 
+
+	.clearfix,
+	.container_#{$numberOfColumns}  {
+		zoom: 1;
+	}
+}
