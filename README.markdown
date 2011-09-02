@@ -13,7 +13,7 @@ a free SASS, .Less and CoffeeScript plugin for Visual Studio 2010.
 Setup your body font
 
 ```html 
-
+//    Setup your body font
 $mysite-font-family:unquote("'Times New Roman',Arial");
   
 @import "reset";
