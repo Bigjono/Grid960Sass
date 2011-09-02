@@ -11,7 +11,7 @@ a free SASS, .Less and CoffeeScript plugin for Visual Studio 2010.
 ## Example Usage
 ===================================
 Setup your body font
-```css 
+```html 
 $mysite-font-family:unquote("'Times New Roman',Arial");
   
 @import "reset";
@@ -25,7 +25,7 @@ $mysite-font-family:unquote("'Times New Roman',Arial");
 
 ##	Delete as appropriate 
 ====================================
-```css   
+```html  
 //   Grid 960 - 12 Columns 
 @include grid960(12); // 12 Columns  
  
