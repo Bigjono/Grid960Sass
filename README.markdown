@@ -11,7 +11,7 @@ a free SASS, .Less and CoffeeScript plugin for Visual Studio 2010.
 ## Example Usage
 ===================================
 Setup your body font
- 
+```css 
 $mysite-font-family:unquote("'Times New Roman',Arial");
   
 @import "reset";
@@ -21,11 +21,11 @@ $mysite-font-family:unquote("'Times New Roman',Arial");
 @import "grid960";
 
 @include text($mysite-font-family);
-
+```
 
 ##	Delete as appropriate 
 ====================================
-   
+```css   
 //   Grid 960 - 12 Columns 
 @include grid960(12); // 12 Columns  
  
@@ -34,13 +34,13 @@ $mysite-font-family:unquote("'Times New Roman',Arial");
 
 For 24 Column Grid 960 
 @include grid960(24); // 24 Columns `
- 
+``` 
  
 On your html page simply use a div with an ID of container.   This is the only difference between grid960 
 and grid960SaSS
 
 
-
+```html
 <div id="container">
 
 
@@ -48,3 +48,4 @@ Your site here
 
 
 </div>
+```
