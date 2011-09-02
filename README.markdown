@@ -1,5 +1,6 @@
 # SASS Template for Grid960
  ==========================================
+ 
 This is a SASS of Grid960 css framework (http://960.gs/)
 
 For more information about SASS please visit http://sass-lang.com/
