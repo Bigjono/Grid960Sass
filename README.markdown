@@ -19,16 +19,18 @@ a free SASS, .Less and CoffeeScript plugin for Visual Studio 2010.
 @import "grid960";
 @include text($mysite-font-family);
 
-/* -----------------------------------
+-----------------------------------
 	Delete as appropriate 
-   -----------------------------------*/
+-----------------------------------
    
-//   Grid 960 - 12 Columns - usage  <div class="container_12"></div>  
+//   Grid 960 - 12 Columns 
 @include grid960(12); // 12 Columns  
  
-//   Grid 960 - 16 Columns - usage  <div class="container_16"></div>  
+//   Grid 960 - 16 Columns 
 @include grid960(16); // 16 Columns
 
-//   Grid 960 - 24 Columns - usage  <div class="container_24"></div>  
+For 24 Column Grid 960 
 @include grid960(24); // 24 Columns `
  
+ 
+On your html page simply use a div with an ID of container.   This is the only difference between grid960 and grid960sass
